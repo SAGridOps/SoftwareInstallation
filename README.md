@@ -21,4 +21,4 @@ dependencies of specific applications.
 # Contributing
 If you would like to see an application deployed on the infrastructure 
 (for your own use, or to support a scientific community), please issue 
-a pull request.
+a pull request to the "proposed" branch. Once the proposed applications are successfully built on the SAGrid CI platform, they will be merged with the master branch.
