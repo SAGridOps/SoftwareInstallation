@@ -1,0 +1,28 @@
+#######################################################################
+# Application: ABySS #
+# Version: 1.2.7 #
+# Author: Timothy Carr #
+# Institute: University of Cape Town #
+# Email: timothy.carr@uct.ac.za #
+# Description: Installation JDL script for ABySS #
+# link on JDL: https://grid.ct.infn.it/twiki/bin/view/GILDA/MoreOnJDL #
+####################################################################### 
+
+Type = "Job";
+JobType = "Normal";
+Executable = "install-abyss.sh";
+InputSandbox = {"install-abyss.sh"};
+StdOutput = "install-abyss.out";
+StdError = "install-abyss.err";
+OutputSandbox = {"install-abyss.out", "install-abyss.err"};
+PerusalFileEnable = True;
+
+# Comment out which site you would like to submit the installation job at. 
+#Requirements = other.GlueCEUniqueID=="grid-ce.ufs.ac.za:8443/cream-pbs-sagrid";
+#Requirements = other.GlueCEUniqueID=="cream-ce.core.wits.ac.za:8443/cream-pbs-sagrid";
+#Requirements = other.GlueCEUniqueID=="grd-ce1.nwu.ac.za:8443/cream-pbs-sagrid";
+#Requirements = other.GlueCEUniqueID=="glite-ce.grid.uj.ac.za:8443/cream-pbs-sagrid";
+#Requirements = other.GlueCEUniqueID=="ce0.iugaza.edu.ps:8443/cream-pbs-grid";
+#Requirements = other.GlueCEUniqueID=="gridce1.cci.ucad.sn:8443/cream-pbs-sagrid";
+#Requirements = other.GlueCEUniqueID=="wonko.bi.up.ac.za:8443/cream-pbs-sagrid";
+#Requirements = other.GlueCEUniqueID=="srvslngrd004.uct.ac.za:8443/cream-pbs-sagrid";
