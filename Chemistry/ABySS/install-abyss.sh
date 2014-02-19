@@ -9,6 +9,8 @@ LFC_HOST=devslngrd002.uct.ac.za
 LFC_TYPE=lfc
 ABYSS_VER="1.2.7"
 GOOGLESPARSE_VER="1.11"
+# using VO_SAGRID_SW_DIR as /tmp for now. 
+VO_SAGRID_SW_DIR=/tmp
 
 export LFC_HOST LFC_TYPE
 whoami 
@@ -38,4 +40,6 @@ make install
 
 # Clean Up 
 rm -rf $HOME/download
+
+rm -rf $VO_SAGRID_SW_DIR
 
