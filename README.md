@@ -14,6 +14,9 @@ characterisation is somewhat arbitrary, and follows no particular
 ontology - specifically because certain applications can be used for 
 research across scientific domains - and is subject to change. 
 
+### Compilers
+There is a Compilers top-level directory
+
 Apart from scientific domain directories, there is a top-level `tools` 
 directory which contains generic tools and libraries which are often 
 dependencies of specific applications. 
