@@ -21,6 +21,9 @@ Apart from scientific domain directories, there is a top-level `tools`
 directory which contains generic tools and libraries which are often 
 dependencies of specific applications. 
 
+### Tools
+Tools are usually common dependencies which are not found on the WN
+
 # Contributing
 If you would like to see an application deployed on the infrastructure 
 (for your own use, or to support a scientific community), please issue 

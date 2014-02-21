@@ -4,3 +4,4 @@ tar xvfz argtable2-13.tar.gz
 cd argtable2-13
 ./configure
 make
+echo "the build is finished"
