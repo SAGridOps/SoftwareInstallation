@@ -5,3 +5,4 @@ cd argtable2-13
 ./configure
 make
 echo "the build is finished"
+echo "just kidding"
