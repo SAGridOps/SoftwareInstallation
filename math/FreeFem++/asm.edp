@@ -1,0 +1,128 @@
+real cpu=clock();
+border B1(t=0,1){x=2*t;y=0;label=1;};
+border B2(t=0,1){x=2;y=11*t;label=2;};
+border B3(t=0,1){x=-t+2 ;y=11;label=3;};
+border B4(t=0,1){x=0;y=-11*t+11;label=4;};
+border B5(t=0,1){x=t+2;y=0;label=5;};
+border B6(t=0,1){x=3;y=11*t;label=6;};
+border B7(t=0,1){x=-t+3;y=11;label=7;};
+border B8(t=0,1){x=3*t+3;y=0;label=8;};
+border B9(t=0,1){x=6 ;y=11*t;label=9;};
+border B10(t=0,1){x=-3*t+6;y=11;label=10;};
+border B11(t=0,1){x=t+6;y=0;label=11;};
+border B12(t=0,1){x=7 ;y=11*t;label=12;};
+border B13(t=0,1){x=-t+7;y=11;label=13;};
+border B14(t=0,1){x=10*t+7;y=0;label=14;};
+border B15(t=0,1){x=17 ;y=11*t;label=15;};
+border B16(t=0,1){x=-10*t+17;y=11;label=16;};
+border B17(t=0,1){x=t+17;y=0;label=17;};
+border B18(t=0,1){x=18 ;y=11*t;label=18;};
+border B19(t=0,1){x=-t+18;y=11;label=19;};
+border B20(t=0,1){x=13*t+18;y=0;label=20;};
+border B21(t=0,1){x=31;y=11*t;label=21;};
+border B22(t=0,1){x=-13*t+31;y=11;label=22;};
+border B23(t=0,1){x=t+31;y=0;label=23;};
+border B24(t=0,1){x=32 ;y=14.7*t;label=24;};
+border B25(t=0,1){x=-t+32;y=-0.1*t+14.7;label=25;};
+border B26(t=0,1){x=31;y=-3.6*t+14.6;label=26;};
+border B27(t=0,1){x=-31*t+31;y=-1.1*t+14.6;label=27;};
+border B28(t=0,1){x=0;y=-2.5*t+13.5;label=28;};
+border B29(t=0,1){x=5*t+32;y=0;label=29;};
+border B30(t=0,1){x=37;y=14.8*t;label=30;};
+border B31(t=0,1){x=-5*t+37;y=-0.1*t+14.8;label=31;};
+border B32(t=0,1){x=t+37;y=0;label=32;};
+border B33(t=0,1){x=38 ;y=15*t;label=33;};
+border B34(t=0,1){x=-t+38;y=-0.2*t+15;label=34;};
+border B35(t=0,1){x=12*t+38;y=0;label=35;};
+border B36(t=0,1){x=50 ;y=15.5*t;label=36;};
+border B37(t=0,1){x=-12*t+50 ;y=-0.5*t+15.5;label=37;};
+mesh Th=buildmesh(B1(5)+B2(22)+B3(5)+B4(22)+B5(5)+B6(22)+B7(5)+B8(8)+B9(22)+B10(8)+B11(5)+B12(22)
++B13(5)+B14(25)+B15(22)+B16(25)+B17(5)+B18(22)+B19(5)+B20(33)+B21(22)+B22(33)+B23(5)+B24(30)+B25(5)
++B26(8)+B27(80)+B28(6)+B29(13)+B30(30)+B31(15)+B32(5)+B33(30)+B34(5)+B35(30)+
+B36(32)+B37(32));
+
+real[int] K(8),Dk(8),kr(8);
+real s1,s2,s3,s4,s5,s6,s7,s8;
+kr[0]=1e-6;kr[1]=55e-4;kr[2]=1e-6;kr[3]=1e-8;kr[4]=1e-8;kr[5]=1e-8;kr[6]=5e-8;kr[7]=2e-6;
+for (int i=0;i<8;i++)
+K[i]=kr[i];
+fespace Vh(Th,P1); Vh ud,u,q,p,v;
+
+func k=K[0]*(x>0)*(x<=31)*(y>=11)*(y<=15.5)+K[1]*(x>0)*(x<=2)*(y>=0)*(y<=11)
+    +K[2]*(x>=2)*(x<=3)*(y>=0)*(y<=11)+K[1]*(x>=3)*(x<=6)*(y>=0)*(y<=11)
+    +K[3]*(x>=6)*(x<=7)*(y>=0)*(y<=11)+K[1]*(x>=7)*(x<=17)*(y>=0)*(y<=11)
+    +K[4]*(x>=17)*(x<=18)*(y>=0)*(y<=11)+K[1]*(x>=18)*(x<=31)*(y>=0)*(y<=11)
+    +K[5]*(x>=31)*(x<=32)*(y>=0)*(y<=15)+K[1]*(x>=32)*(x<=37)*(y>=0)*(y<=15)
+    +K[6]*(x>=37)*(x<=38)*(y>=0)*(y<=15)+K[7]*(x>=38)*(x<50)*(y>=0)*(y<=15.5);
+
+func dk=(K[0]-kr[0])*(x>0)*(x<=31)*(y>=11)*(y<=15.5)+(K[1]-kr[1])*(x>0)*(x<=2)*(y>=0)*(y<=11)
+    +(K[2]-kr[2])*(x>=2)*(x<=3)*(y>=0)*(y<=11)+(K[1]-kr[1])*(x>=3)*(x<=6)*(y>=0)*(y<=11)
+    +(K[3]-kr[3])*(x>=6)*(x<=7)*(y>=0)*(y<=11)+(K[1]-kr[1])*(x>=7)*(x<=17)*(y>=0)*(y<=11)
+    +(K[4]-kr[4])*(x>=17)*(x<=18)*(y>=0)*(y<=11)+(K[1]-kr[1])*(x>=18)*(x<=31)*(y>=0)*(y<=11)
+    +(K[5]-kr[5])*(x>=31)*(x<=32)*(y>=0)*(y<=15)+(K[1]-kr[1])*(x>=32)*(x<=37)*(y>=0)*(y<=15)
+    +(K[6]-kr[6])*(x>=37)*(x<=38)*(y>=0)*(y<=15)+(K[7]-kr[7])*(x>=38)*(x<50)*(y>=0)*(y<=15.5);
+
+func f=1.5e-8;
+func g=0*1e-6*(x>=32)*(x<=37)*(y>=0)*(y<=15);
+func h=-0*1.9e-6*(x>=38)*(x<50)*(y>=0)*(y<=15.5);
+
+problem pd(u,v,solver=CG)=
+int2d(Th)(k*(dx(u)*dx(v)+dy(u)*dy(v)))
+-int2d(Th)((f)*v)+on(4,u=211)+on(28,u=211)+on(36,u=287);
+pd;ud=u;
+
+problem padjt(q,p)=
+int2d(Th)(k*(dx(q)*dx(p)+dy(q)*dy(p)))
+-int2d(Th)((u-ud)*p)+on(4,q=0)+on(28,q=0)+on(36,q=0);
+
+real [int,int] M(10000,8);
+ofstream fp1("s1.dat");
+ofstream fp2("s2.dat");
+ofstream fp3("s3.dat");
+ofstream fp4("s4.dat");
+ofstream fp5("s5.dat");
+ofstream fp6("s6.dat");
+ofstream fp7("s7.dat");
+ofstream fp8("s8.dat");
+
+ifstream file("parameters.dat");
+
+for(int i=0;i<10000;i++)
+for(int j=0;j<8;j++)
+file>>M(i,j);
+for(int i=0;i<10000;i++)
+{
+K[0]=M(i,0);
+pd;padjt;
+s1=int2d(Th)(-dk*(dx(u)*dx(q)+dy(u)*dy(q)));
+K[1]=M(i,1);K[0]=kr[0];
+pd;padjt;
+s2=int2d(Th)(-dk*(dx(u)*dx(q)+dy(u)*dy(q)));
+K[2]=M(i,2);K[1]=kr[1];
+pd;padjt;
+s3=int2d(Th)(-dk*(dx(u)*dx(q)+dy(u)*dy(q)));
+K[3]=M(i,3);K[2]=kr[2];
+pd;padjt;
+s4=int2d(Th)(-dk*(dx(u)*dx(q)+dy(u)*dy(q)));
+K[4]=M(i,4);K[3]=kr[3];
+pd;padjt;
+s5=int2d(Th)(-dk*(dx(u)*dx(q)+dy(u)*dy(q)));
+K[5]=M(i,5);K[4]=kr[4];
+pd;padjt;
+s6=int2d(Th)(-dk*(dx(u)*dx(q)+dy(u)*dy(q)));
+K[6]=M(i,6);K[5]=kr[5];
+pd;padjt;
+s7=int2d(Th)(-dk*(dx(u)*dx(q)+dy(u)*dy(q)));
+K[7]=M(i,7);K[6]=kr[6];
+pd;padjt;
+s8=int2d(Th)(-dk*(dx(u)*dx(q)+dy(u)*dy(q)));
+fp1<<s1<<endl;
+fp2<<s2<<endl;
+fp3<<s3<<endl;
+fp4<<s4<<endl;
+fp5<<s5<<endl;
+fp6<<s6<<endl;
+fp7<<s7<<endl;
+fp8<<s8<<endl;
+K[7]=kr[7];
+}
