@@ -28,7 +28,7 @@
 
 # these variables will be configured by the web page
 
-SEGMENTS="sherpa_src chips_src tools_src prism_src obsvis_src "
+SEGMENTS="contrib CALDB_main CALDB_acis_bkgrnd CALDB_hrc_bkgrnd sherpa_src chips_src tools_src prism_src obsvis_src "
 SYS="Linux64"
 
 # Global variables
@@ -39,7 +39,7 @@ SYS="Linux64"
 DEF_DL_DIR="`pwd`"       # Default Download Directory
 DL_DIR=""                # Download Directory
 CL_DL_DIR=""             # Set if directory given on command line
-DEF_INS_DIR="${HOME}"    # Default Install Directory
+DEF_INS_DIR="/opt/deploy/CIAO"    # Default Install Directory
 INS_DIR=""               # Install Directory
 CL_INS_DIR=""            # Set if directory given on command line
 CALDB_DIR="CIAO"         # CALDB Directory
@@ -47,7 +47,7 @@ DEF_RUN_SMOKE="y"        # run smoke tests after install
 RUN_SMOKE=""
 DEF_SYS="NONE"           # Default system
 SYSTEM=""                # System to install (Linux, Linux64, osxml64, osx64)
-BATCH="n"                # Batch mode (No prompts)
+BATCH="y"                # Batch mode (No prompts)
 SILENT="n"               # Silent mode (No output Implies BATCH=y)
 CONTROL_FILE="ciao-control" # Control file name
 CONTROL_LOCATION="ftp://cxc.harvard.edu/pub/ciao4.6/all"
