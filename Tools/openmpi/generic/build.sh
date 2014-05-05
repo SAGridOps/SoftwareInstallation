@@ -3,7 +3,6 @@ SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
 #module load gcc/4.8.2
-module load mpi
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
     mkdir -p $SRC_DIR
@@ -36,7 +35,7 @@ proc ModulesHelp { } {
 module-whatis   "$NAME $VERSION."
 setenv       openpmi_VERSION       $VERSION
 setenv       openmpi_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path LD_LIBRARY_PATH   $::env(FFTW_DIR)/lib
+prepend-path LD_LIBRARY_PATH   $::env(openmpi_DIR)/lib
 MODULE_FILE
 ) > modules/$VERSION 
 
