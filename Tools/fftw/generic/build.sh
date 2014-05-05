@@ -3,6 +3,7 @@ SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
 #module load gcc/4.8.2
+module avail
 module load mpi
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
