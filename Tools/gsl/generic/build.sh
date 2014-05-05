@@ -6,7 +6,7 @@ module load ci
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
     mkdir -p $SRC_DIR
-	wget http://www.open-mpi.org/software/ompi/v1.8/downloads/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
+	wget http://$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
 fi
 
 tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE

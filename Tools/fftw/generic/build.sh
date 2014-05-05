@@ -5,6 +5,8 @@ module load ci
 #module load gcc/4.8.2
 module avail
 module load openmpi
+which mpicc 
+echo $PATH
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
     mkdir -p $SRC_DIR

@@ -34,8 +34,9 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION."
 setenv       openpmi_VERSION       $VERSION
-setenv       openmpi_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       openmpi_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSIONbin
 prepend-path LD_LIBRARY_PATH   $::env(openmpi_DIR)/lib
+prepend-path PATH			   $::env(openmpi_DIR)/bin
 MODULE_FILE
 ) > modules/$VERSION 
 
