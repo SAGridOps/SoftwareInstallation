@@ -6,6 +6,7 @@
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
+echo $SOFT_DIR
 #module load gcc/4.8.2
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
@@ -16,10 +17,10 @@ fi
 tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 
 cd $WORKSPACE/$NAME-$VERSION
-./configure --prefix $SOFT_DIR
+./configure --prefix=$SOFT_DIR
 make -j 8
 make check
-make install DESTDIR=$WORKSPACE
+make install  # DESTDIR=$WORKSPACE/build
 
 mkdir -p $REPO_DIR
 rm -rf $REPO_DIR/* 
