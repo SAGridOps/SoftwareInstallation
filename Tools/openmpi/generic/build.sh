@@ -56,5 +56,9 @@ prepend-path PATH			   $::env(openmpi_DIR)/bin
 MODULE_FILE
 ) > modules/$VERSION 
 
-#mkdir -p $LIBRARIES_MODULES/$NAME 
-#cp modules/$VERSION $LIBRARIES_MODULES/$NAME
+mkdir -p $LIBRARIES_MODULES/$NAME 
+cp -v modules/$VERSION $LIBRARIES_MODULES/$NAME
+
+module avail
+module add openmpi
+which mpicc
