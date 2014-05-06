@@ -7,6 +7,7 @@ module avail
 module load openmpi
 echo $PATH
 echo $LD_LIBRARY_PATH
+echo $openmpi_DIR
 which mpicc 
 
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
