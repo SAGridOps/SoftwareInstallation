@@ -7,6 +7,9 @@ SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
 echo $SOFT_DIR
+echo $WORKSPACE
+echo $SRC_DIR
+
 #module load gcc/4.8.2
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
@@ -20,11 +23,16 @@ cd $WORKSPACE/$NAME-$VERSION
 ./configure --prefix=$SOFT_DIR
 make -j 8
 make check
-make install  # DESTDIR=$WORKSPACE/build
+make install #DESTDIR=$WORKSPACE/build
 
-mkdir -p $REPO_DIR
-rm -rf $REPO_DIR/* 
-tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE apprepo
+# At this point, we should have built OpenMPI
+
+ls -lht $SOFT_DIR
+
+
+#mkdir -p $REPO_DIR
+#tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE 
+
 
 mkdir -p modules
 (
@@ -39,11 +47,14 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION."
 setenv       openpmi_VERSION       $VERSION
+#
+#
+#
 setenv       openmpi_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(openmpi_DIR)/lib
 prepend-path PATH			   $::env(openmpi_DIR)/bin
 MODULE_FILE
 ) > modules/$VERSION 
 
-mkdir -p $LIBRARIES_MODULES/$NAME 
-cp modules/$VERSION $LIBRARIES_MODULES/$NAME
+#mkdir -p $LIBRARIES_MODULES/$NAME 
+#cp modules/$VERSION $LIBRARIES_MODULES/$NAME
