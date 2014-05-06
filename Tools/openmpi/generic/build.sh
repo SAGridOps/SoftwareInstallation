@@ -1,4 +1,8 @@
 #!/bin/bash -e
+# VARIABLES PASSED FROM JENKINS:
+# 
+# 
+# 
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
