@@ -19,7 +19,7 @@ cd $WORKSPACE/$NAME-$VERSION
 ./configure --prefix $SOFT_DIR
 make -j 8
 make check
-make install DESTDIR=$WORKSPACE/build
+make install DESTDIR=$WORKSPACE
 
 mkdir -p $REPO_DIR
 rm -rf $REPO_DIR/* 
