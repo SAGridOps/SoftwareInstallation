@@ -24,7 +24,7 @@ make install  # DESTDIR=$WORKSPACE/build
 
 mkdir -p $REPO_DIR
 rm -rf $REPO_DIR/* 
-tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE/build apprepo
+tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE apprepo
 
 mkdir -p modules
 (
