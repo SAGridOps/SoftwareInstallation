@@ -2,12 +2,12 @@
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
+rm $SRC_DIR/$SOURCE_FILE
 #module load gcc/4.8.2
 echo "getting the file from gnu.org"
-if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
-then
-    mkdir -p $SRC_DIR
-	wget ftp://ftp.is.co.za/mirror/ftp.gnu.org/gnu/gsl/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
+if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
+    mkdir -vp $SRC_DIR
+	wget --verbose ftp://ftp.is.co.za/mirror/ftp.gnu.org/gnu/gsl/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
 fi
 
 ls -lht $SRC_DIR
