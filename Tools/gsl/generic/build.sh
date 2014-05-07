@@ -11,7 +11,7 @@ then
 fi
 ls -lht $SRC_DIR
 ls -lht $SRC_DIR/$SOURCE_FILE
-tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
+tar xvfz $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 
 cd $WORKSPACE/$NAME-$VERSION
 ./configure --prefix $SOFT_DIR
