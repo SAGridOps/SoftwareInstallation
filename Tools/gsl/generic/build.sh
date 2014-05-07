@@ -6,7 +6,7 @@ module load ci
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
     mkdir -p $SRC_DIR
-	wget http://$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
+	wget http://ftpmirror.gnu.org/gsl/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
 fi
 
 tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
@@ -33,9 +33,9 @@ proc ModulesHelp { } {
 }
 
 module-whatis   "$NAME $VERSION."
-setenv       openpmi_VERSION       $VERSION
-setenv       openmpi_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path LD_LIBRARY_PATH   $::env(openmpi_DIR)/lib
+setenv       GSL_VERSION       $VERSION
+setenv       GSL_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+prepend-path LD_LIBRARY_PATH   $::env(GSL_DIR)/lib
 MODULE_FILE
 ) > modules/$VERSION 
 
