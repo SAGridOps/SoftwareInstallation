@@ -9,7 +9,8 @@ module load ci
 echo $SOFT_DIR
 echo $WORKSPACE
 echo $SRC_DIR
-
+echo $NAME
+echo $VERSION
 #module load gcc/4.8.2
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
@@ -18,6 +19,7 @@ then
 fi
 
 tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
+ls $WORKSPACE
 
 cd $WORKSPACE/$NAME-$VERSION
 ./configure --prefix=$SOFT_DIR 
