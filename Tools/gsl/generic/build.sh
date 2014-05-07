@@ -3,12 +3,14 @@ SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
 #module load gcc/4.8.2
+echo "getting the file from gnu.org"
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
     mkdir -p $SRC_DIR
 	wget http://ftpmirror.gnu.org/gsl/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
 fi
-
+ls -lht $SRC_DIR
+ls -lht $SRC_DIR/$SOURCE_FILE
 tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 
 cd $WORKSPACE/$NAME-$VERSION
