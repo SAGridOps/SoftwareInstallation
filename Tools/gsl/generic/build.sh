@@ -7,8 +7,9 @@ echo "getting the file from gnu.org"
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
     mkdir -p $SRC_DIR
-	wget http://ftpmirror.gnu.org/gsl/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
+	wget ftp://ftp.is.co.za/mirror/ftp.gnu.org/gnu/gsl/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
 fi
+
 ls -lht $SRC_DIR
 ls -lht $SRC_DIR/$SOURCE_FILE
 tar xvfz $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
