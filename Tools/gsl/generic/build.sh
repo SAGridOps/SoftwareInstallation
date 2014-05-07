@@ -2,7 +2,6 @@
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
-rm $SRC_DIR/$SOURCE_FILE
 #module load gcc/4.8.2
 echo "getting the file from gnu.org"
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
