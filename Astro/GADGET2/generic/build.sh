@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 # The GADGET-2 build script
 # 
 # GADGET requires HDF5 FFTW2 ZLIB and openmpi
@@ -12,7 +12,10 @@ module add gsl
 # for a specific architecture/system.
 # this is kept in the repo which is checked out before compiling.
 ls -lht # should show Makefile.works
+# we need to convert the capital name to the lower case.
+echo "NAME is $NAME - converting to lower case"
 NAME=${NAME,,}
+echo "NAME is now $NAME"
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 #if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
 mkdir -p $SRC_DIR
