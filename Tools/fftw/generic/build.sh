@@ -1,4 +1,6 @@
 #!/bin/bash -e
+# convert it to lower case first
+NAME=${NAME,,}
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
