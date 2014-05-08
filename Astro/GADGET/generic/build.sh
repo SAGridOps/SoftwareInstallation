@@ -34,7 +34,7 @@ ls $WORKSPACE
 NAME=`echo ${NAME:0:1} | tr  '[a-z]' '[A-Z]'`${NAME:1}
 DIR=$PWD
 cd $WORKSPACE/$NAME-$VERSION/Gadget2
-cp -v $MAKEFILE .
+cp -fv $MAKEFILE Makefile
 make
 
 mkdir -p modules
