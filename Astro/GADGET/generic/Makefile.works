@@ -102,7 +102,7 @@ ifeq ($(SYSTYPE),"local")
 CC       =  mpicc
 OPTIMIZE =  -O3 -Wall
 #GSL_INCL =  -I/opt/deploy/gsl/1.16/include
-GSL_INCL = -I$GSL_DIR/include
+GSL_INCL = -I${GSL_DIR}/include
 #GSL_LIBS =  -L/opt/deploy/gsl/1.16/lib  -Wl,"-R /opt/deploy/gsl/1.16/lib"
 GSL_LIBS = -L$GSL_DIR/lib -Wl,"-R $GSL_DIR/lib"
 #FFTW_INCL=  -I/opt/deploy/fftw3/2.1.5/include/

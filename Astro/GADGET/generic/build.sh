@@ -20,11 +20,11 @@ echo "NAME is $NAME - converting to lower case"
 NAME=`echo "$NAME" | tr '[:upper:]' '[:lower:]'`
 echo "NAME is now $NAME"
 SOURCE_FILE=$NAME-$VERSION.tar.gz
-#if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
-mkdir -p $SRC_DIR
-echo "getting http://www.mpa-garching.mpg.de/gadget/$SOURCE_FILE"
-wget http://www.mpa-garching.mpg.de/gadget/$SOURCE_FILE  -O $SRC_DIR/$SOURCE_FILE
-#fi
+if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
+	mkdir -p $SRC_DIR
+	echo "getting http://www.mpa-garching.mpg.de/gadget/$SOURCE_FILE"
+	wget http://www.mpa-garching.mpg.de/gadget/$SOURCE_FILE  -O $SRC_DIR/$SOURCE_FILE
+fi
 
 tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 ls $WORKSPACE
@@ -33,6 +33,7 @@ ls $WORKSPACE
 # cp Makefile.works $WORKSPACE/${NAME^}-$VERSION/Gadget2/Makefile
 # apparently bash on the build machines is still 3.x
 NAME=`echo ${NAME:0:1} | tr  '[a-z]' '[A-Z]'`${NAME:1}
+cp -fv Makefile.works $WORKSPACE/$NAME-$VERSION/Gadget2/Makefile
 cd $WORKSPACE/$NAME-$VERSION/Gadget2
 make
 
