@@ -7,7 +7,7 @@ module add fftw/2.1.5
 module add hdf5
 module add openmpi
 module add gsl
-
+ls -lht /apprepo
 ls -lht  $GSL_DIR/include
 ls -lht $GSL_DIR/include/gsl
 find $GSL_DIR/include -name "gsl_rng.h"

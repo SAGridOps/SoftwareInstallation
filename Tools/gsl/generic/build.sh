@@ -1,7 +1,9 @@
 #!/bin/bash -e
 SOURCE_FILE=$NAME-$VERSION.tar.gz
-
+echo $SRC_DIR
 module load ci
+echo "this was a build after a changed was pushed to github"
+# SRC_DIR=/repo/src/$NAME
 #module load gcc/4.8.2
 echo "getting the file from gnu.org"
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
@@ -9,7 +11,6 @@ if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
 	wget --verbose ftp://ftp.is.co.za/mirror/ftp.gnu.org/gnu/gsl/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
 fi
 
-ls -lht $SRC_DIR
 ls -lht $SRC_DIR/$SOURCE_FILE
 tar xvfz $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 
