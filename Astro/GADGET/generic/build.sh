@@ -30,8 +30,8 @@ ls $WORKSPACE
 # we need to capitalise the first letter
 # cp Makefile.works $WORKSPACE/${NAME^}-$VERSION/Gadget2/Makefile
 # apparently bash on the build machines is still 3.x
-NAME=`echo ${NAME:0:1} | tr  '[a-z]' '[A-Z]'`${NAME:1}
-cd $WORKSPACE/${NAME^}-$VERSION/Gadget2
+# NAME=`echo ${NAME:0:1} | tr  '[a-z]' '[A-Z]'`${NAME:1}
+cd $WORKSPACE/$NAME-$VERSION/Gadget2
 make
 
 mkdir -p modules
