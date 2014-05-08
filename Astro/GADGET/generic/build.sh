@@ -8,6 +8,8 @@ module add hdf5
 module add openmpi
 module add gsl
 
+env
+
 # GADGET comes with a Make file which needs to be tweaked in order to compile 
 # for a specific architecture/system.
 # this is kept in the repo which is checked out before compiling.
