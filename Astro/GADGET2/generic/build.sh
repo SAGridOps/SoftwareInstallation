@@ -14,7 +14,8 @@ module add gsl
 ls -lht # should show Makefile.works
 # we need to convert the capital name to the lower case.
 echo "NAME is $NAME - converting to lower case"
-NAME=${NAME,,}
+# NAME=${NAME,,} # this does not work on Jenkins - maybe wrong bash version
+NAME=`echo "$NAME" | tr '[:upper:]' '[:lower:]'`
 echo "NAME is now $NAME"
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 #if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
