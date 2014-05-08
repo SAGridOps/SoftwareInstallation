@@ -8,12 +8,11 @@ module add hdf5
 module add openmpi
 module add gsl
 
-env
-
 # GADGET comes with a Make file which needs to be tweaked in order to compile 
 # for a specific architecture/system.
 # this is kept in the repo which is checked out before compiling.
-ls -lht # should show Makefile.works
+MAKEFILE=$PWD/Makefile.works
+echo "Make file is $MAKEFILE"
 # we need to convert the capital name to the lower case.
 echo "NAME is $NAME - converting to lower case"
 # NAME=${NAME,,} # this does not work on Jenkins - maybe wrong bash version
@@ -35,7 +34,7 @@ ls $WORKSPACE
 NAME=`echo ${NAME:0:1} | tr  '[a-z]' '[A-Z]'`${NAME:1}
 DIR=$PWD
 cd $WORKSPACE/$NAME-$VERSION/Gadget2
-cp $DIR/Makefile.works .
+cp -v $MAKEFILE .
 make
 
 mkdir -p modules
