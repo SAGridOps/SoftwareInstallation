@@ -2,7 +2,6 @@
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 echo $SRC_DIR
 module load ci
-echo "1"
 # SRC_DIR=/repo/src/$NAME
 #module load gcc/4.8.2
 echo "getting the file from gnu.org"
