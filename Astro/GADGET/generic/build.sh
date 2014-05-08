@@ -11,7 +11,7 @@ module add gsl
 # GADGET comes with a Make file which needs to be tweaked in order to compile 
 # for a specific architecture/system.
 # this is kept in the repo which is checked out before compiling.
-MAKEFILE=$PWD/Makefile.works
+MAKEFILE=/repo/scripts/Astro/$NAME/$SITE/Makefile.works
 echo "Make file is $MAKEFILE"
 # we need to convert the capital name to the lower case.
 echo "NAME is $NAME - converting to lower case"
