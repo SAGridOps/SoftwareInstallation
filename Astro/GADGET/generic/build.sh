@@ -25,16 +25,17 @@ if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
 	echo "getting http://www.mpa-garching.mpg.de/gadget/$SOURCE_FILE"
 	wget http://www.mpa-garching.mpg.de/gadget/$SOURCE_FILE  -O $SRC_DIR/$SOURCE_FILE
 fi
-
 tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 ls $WORKSPACE
 # gadget directory doens't follow our nice naming conventions so
 # we need to capitalise the first letter
 # cp Makefile.works $WORKSPACE/${NAME^}-$VERSION/Gadget2/Makefile
 # apparently bash on the build machines is still 3.x
+
 NAME=`echo ${NAME:0:1} | tr  '[a-z]' '[A-Z]'`${NAME:1}
-cp -fv Makefile.works $WORKSPACE/$NAME-$VERSION/Gadget2/Makefile
+DIR=$PWD
 cd $WORKSPACE/$NAME-$VERSION/Gadget2
+cp $DIR/Makefile.works .
 make
 
 mkdir -p modules
