@@ -51,6 +51,7 @@ proc ModulesHelp { } {
 }
 
 module-whatis   "$NAME $VERSION."
+prereq ("zlib","openmpi")
 setenv       HDF5_VERSION       $VERSION
 #
 #

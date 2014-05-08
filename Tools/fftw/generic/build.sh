@@ -39,7 +39,7 @@ proc ModulesHelp { } {
     puts stderr "       This module does nothing but alert the user"
     puts stderr "       that the [module-info name] module is not available"
 }
-
+prereq("openmpi")
 module-whatis   "$NAME $VERSION."
 setenv       FFTW_VERSION       $VERSION
 setenv       FFTW_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
