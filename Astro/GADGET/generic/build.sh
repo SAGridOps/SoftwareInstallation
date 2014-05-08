@@ -28,7 +28,9 @@ tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 ls $WORKSPACE
 # gadget directory doens't follow our nice naming conventions so
 # we need to capitalise the first letter
-cp Makefile.works $WORKSPACE/${NAME^}-$VERSION/Gadget2/Makefile
+# cp Makefile.works $WORKSPACE/${NAME^}-$VERSION/Gadget2/Makefile
+# apparently bash on the build machines is still 3.x
+NAME=`echo ${NAME:0:1} | tr  '[a-z]' '[A-Z]'`${NAME:1}
 cd $WORKSPACE/${NAME^}-$VERSION/Gadget2
 make
 
