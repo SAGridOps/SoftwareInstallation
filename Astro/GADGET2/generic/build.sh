@@ -2,7 +2,7 @@
 # The GADGET-2 build script
 # 
 # GADGET requires HDF5 FFTW2 ZLIB and openmpi
-modeul add ci
+module add ci
 module add fftw/2.1.5
 module add hdf5
 module add openmpi
