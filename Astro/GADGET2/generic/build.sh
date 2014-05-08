@@ -12,7 +12,7 @@ module add gsl
 # for a specific architecture/system.
 # this is kept in the repo which is checked out before compiling.
 ls -lht # should show Makefile.works
-
+NAME=${NAME,,}
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 #if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
 mkdir -p $SRC_DIR
