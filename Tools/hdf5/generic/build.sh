@@ -36,16 +36,14 @@ tar xvfz /repo/$SITE/$OS/$ARCH/openmopi/$OPENMPI_VERSION/build.tar.gz -C /
 ./configure --prefix=$SOFT_DIR 
 make -j 8
 make check
-make install #DESTDIR=$WORKSPACE/build
+make install DESTDIR=$WORKSPACE/build
 
 # At this point, we should have built OpenMPI
 
 ls -lht $SOFT_DIR
-
-
 mkdir -p $REPO_DIR
 rm -rf $REPO_DIR/*
-tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE 
+tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE/build apprepo 
 
 
 mkdir -p modules
