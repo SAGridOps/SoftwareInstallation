@@ -31,7 +31,7 @@ tar -xvzf /repo/$SITE/$OS/$ARCH/zlib/$ZLIB_VERSION/build.tar.gz -C /
 # ... and openmpi
 
 rm -rf $OPENMPI_DIR
-tar xvfz /repo/$SITE/$OS/$ARCH/openmopi/$OPENMPI_VERSION/build.tar.gz -C /
+tar xvfz /repo/$SITE/$OS/$ARCH/openmpi/$OPENMPI_VERSION/build.tar.gz -C /
 
 ./configure --prefix=$SOFT_DIR 
 make -j 8
