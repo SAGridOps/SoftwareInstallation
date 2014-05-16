@@ -12,7 +12,8 @@ if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
 fi
 tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 ls $WORKSPACE
-./configure --enable-download
+cd freefem++-$VERSION
+$WORKSPACE/configure --enable-download
 time nice -n20 make -j2 install DESTDIR=$WORKSPACE/build
 
 mkdir -p $REPO_DIR
