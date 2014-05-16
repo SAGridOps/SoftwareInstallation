@@ -11,9 +11,9 @@ if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
 	wget http://www.freefem.org/ff++/ftp/$SOURCE_FILE  -O $SRC_DIR/$SOURCE_FILE
 fi
 tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
-ls $WORKSPACE
+ls
 cd freefem++-$VERSION
-$WORKSPACE/configure --enable-download
+./configure --enable-download
 time nice -n20 make -j2 install DESTDIR=$WORKSPACE/build
 
 mkdir -p $REPO_DIR
