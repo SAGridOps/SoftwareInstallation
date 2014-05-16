@@ -40,7 +40,6 @@ make install DESTDIR=$WORKSPACE/build
 
 # At this point, we should have built OpenMPI
 
-ls -lht $SOFT_DIR
 mkdir -p $REPO_DIR
 rm -rf $REPO_DIR/*
 tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE/build apprepo 
