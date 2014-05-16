@@ -29,11 +29,12 @@ proc ModulesHelp { } {
     puts stderr "       This module does nothing but alert the user"
     puts stderr "       that the [module-info name] module is not available"
 }
-preqreq("gsl","fftw/2.1.5","hdf5")
+
 module-whatis   "$NAME $VERSION."
-setenv       GSL_VERSION       $VERSION
-setenv       GSL_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path LD_LIBRARY_PATH   $::env(GSL_DIR)/lib
+setenv       FREEFEM_VERSION       $VERSION
+setenv       FREEFEM_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+prepend-path LD_LIBRARY_PATH   $::env(FREEFEM_DIR)/lib
+prepend-path PATH              $::env(FREEFEM_DIR)/bin
 MODULE_FILE
 ) > modules/$VERSION 
 # we need a new modules collection - Astro.
