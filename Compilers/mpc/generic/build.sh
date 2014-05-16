@@ -1,4 +1,4 @@
-#!/bin/bash -e
+	#!/bin/bash -e
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci

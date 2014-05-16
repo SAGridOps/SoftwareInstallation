@@ -47,7 +47,8 @@ NAME=`echo ${NAME:0:1} | tr  '[a-z]' '[A-Z]'`${NAME:1}
 DIR=$PWD
 cd $WORKSPACE/$NAME-$VERSION/Gadget2
 cp -fv $MAKEFILE Makefile
-make
+make install DESTDIR=$WORKSPACE/build
+
 
 mkdir -p $REPO_DIR
 rm -rf $REPO_DIR/* 
