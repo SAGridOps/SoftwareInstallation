@@ -7,9 +7,12 @@ module load ci
 #module load gcc/4.8.2
 module avail
 module load openmpi
+
+rm -rf $OPENMPI_DIR
+tar -xvzf /repo/$SITE/$OS/$ARCH/openmpi/$OPENMPI_VERSION/build.tar.gz -C /
 echo $PATH
 echo $LD_LIBRARY_PATH
-echo $openmpi_DIR
+echo $OPENMPI_DIR
 which mpicc 
 
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]

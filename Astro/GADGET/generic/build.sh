@@ -7,10 +7,19 @@ module add fftw/2.1.5
 module add hdf5
 module add openmpi
 module add gsl
-ls -lht /apprepo
-ls -lht  $GSL_DIR/include
-ls -lht $GSL_DIR/include/gsl
-find $GSL_DIR/include -name "gsl_rng.h"
+
+rm -rf $FFTW_DIR
+tar xvfz /repo/$SITE/$OS/$ARCH/fftw/$FFTW_VERSION/build.tar.gz -C /
+
+rm -rf $HDF5_DIR
+tar xvfz /repo/$SITE/$OS/$ARCH/hdf5/$HDF5_VERSION/build.tar.gz -C /
+
+rm -rf $OPENMPI_DIR
+tar xvfz /repo/$SITE/$OS/$ARCH/openmpi/$OPENMPI_VERSION/build.tar.gz -C /
+
+rm -rf $GSL_DIR
+tar xvfz /repo/$SITE/$OS/$ARCH/gsl/$GSL_VERSION/build.tar.gz -C /
+
 # GADGET comes with a Make file which needs to be tweaked in order to compile 
 # for a specific architecture/system.
 # this is kept in the repo which is checked out before compiling.
@@ -40,6 +49,10 @@ cd $WORKSPACE/$NAME-$VERSION/Gadget2
 cp -fv $MAKEFILE Makefile
 make
 
+mkdir -p $REPO_DIR
+rm -rf $REPO_DIR/* 
+tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE/build apprepo
+
 mkdir -p modules
 (
 cat <<MODULE_FILE
@@ -60,5 +73,3 @@ MODULE_FILE
 # we need a new modules collection - Astro.
 mkdir -p $LIBRARIES_MODULES/$NAME 
 cp modules/$VERSION $LIBRARIES_MODULES/$NAME 
-
-

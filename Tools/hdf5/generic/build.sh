@@ -25,6 +25,14 @@ cd $WORKSPACE/$NAME-$VERSION
 module add zlib
 module add openmpi
 
+# pull in the built code for zlib
+rm -rf $ZLIB_DIR
+tar -xvzf /repo/$SITE/$OS/$ARCH/zlib/$ZLIB_VERSION/build.tar.gz -C /
+# ... and openmpi
+
+rm -rf $OPENMPI_DIR
+tar xvfz /repo/$SITE/$OS/$ARCH/openmopi/$OPENMPI_VERSION/build.tar.gz -C /
+
 ./configure --prefix=$SOFT_DIR 
 make -j 8
 make check
@@ -35,8 +43,9 @@ make install #DESTDIR=$WORKSPACE/build
 ls -lht $SOFT_DIR
 
 
-#mkdir -p $REPO_DIR
-#tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE 
+mkdir -p $REPO_DIR
+rm -rf $REPO_DIR/*
+tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE 
 
 
 mkdir -p modules

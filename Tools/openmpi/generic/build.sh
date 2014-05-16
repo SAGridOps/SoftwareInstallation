@@ -29,10 +29,8 @@ make install #DESTDIR=$WORKSPACE/build
 
 ls -lht $SOFT_DIR
 
-
-#mkdir -p $REPO_DIR
-#tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE 
-
+rm -rf $REPO_DIR/* 
+tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE/build apprepo
 
 mkdir -p modules
 (
@@ -46,13 +44,13 @@ proc ModulesHelp { } {
 }
 
 module-whatis   "$NAME $VERSION."
-setenv       openpmi_VERSION       $VERSION
+setenv       OPENMPI_VERSION       $VERSION
 #
 #
 #
-setenv       openmpi_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path LD_LIBRARY_PATH   $::env(openmpi_DIR)/lib
-prepend-path PATH			   $::env(openmpi_DIR)/bin
+setenv       OPENMPI_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+prepend-path LD_LIBRARY_PATH   $::env(OPENMPI_DIR)/lib
+prepend-path PATH			   $::env(OPENMPI_DIR)/bin
 MODULE_FILE
 ) > modules/$VERSION 
 
