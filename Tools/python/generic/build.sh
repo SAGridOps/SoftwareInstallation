@@ -29,9 +29,8 @@ module add zlib
 # pull in the built code for zlib
 rm -rf $ZLIB_DIR
 tar -xvzf /repo/$SITE/$OS/$ARCH/zlib/$ZLIB_VERSION/build.tar.gz -C /
-./configure --prefix=$SOFT_DIR 
+./configure --prefix=$SOFT_DIR/$VERSION
 make -j 8
-make check
 make install DESTDIR=$WORKSPACE/build
 
 # At this point, we should have built Python version
@@ -39,7 +38,6 @@ make install DESTDIR=$WORKSPACE/build
 mkdir -p $REPO_DIR
 rm -rf $REPO_DIR/*
 tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE/build apprepo 
-
 
 mkdir -p modules
 (
