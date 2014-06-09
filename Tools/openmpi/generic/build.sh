@@ -9,7 +9,7 @@ module load ci
 echo $SOFT_DIR
 echo $WORKSPACE
 echo $SRC_DIR
-
+ls -lht $SRC_DIR
 #module load gcc/4.8.2
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
