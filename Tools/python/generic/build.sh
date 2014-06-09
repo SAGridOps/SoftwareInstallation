@@ -56,9 +56,9 @@ setenv        PYTHON_VERSION     $VERSION
 #
 #
 #
-setenv       PYTHON_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-setenv 		 PYTHON_PATH          /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION/lib/
-prepend-path LD_LIBRARY_PATH   $::env(PYTHON_DIR)/lib
+setenv       PYTHON_DIR           "/apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION"
+setenv 		 PYTHON_PATH          "/apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION/lib/"
+prepend-path LD_LIBRARY_PATH   "$::env(PYTHON_DIR)/lib"
 MODULE_FILE
 ) > modules/$VERSION 
 
