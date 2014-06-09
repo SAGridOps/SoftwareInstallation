@@ -15,7 +15,7 @@ echo $VERSION
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
     mkdir -p $SRC_DIR
-	wget https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tgz -O $SRC_DIR/$SOURCE_FILE
+	wget --no-check-certificate https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tgz -O $SRC_DIR/$SOURCE_FILE
 fi
 # echo $NAME | tr '[:upper:]' '[:lower:]'
 tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
