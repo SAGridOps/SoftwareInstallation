@@ -18,7 +18,7 @@ then
 	wget http://zlib.net/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
 fi
 
-tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
+tar xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 ls $WORKSPACE
 
 cd $WORKSPACE/$NAME-$VERSION
