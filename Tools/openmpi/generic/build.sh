@@ -6,9 +6,10 @@
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
-echo $SOFT_DIR
-echo $WORKSPACE
-echo $SRC_DIR
+echo "SOFT DIR = $SOFT_DIR"
+echo "WORKSPACE = $WORKSPACE"
+echo "SRC DIR = $SRC_DIR"
+echo "REPO DIR = $REPO_DIR"
 ls -lht $SRC_DIR
 #module load gcc/4.8.2
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
