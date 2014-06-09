@@ -52,7 +52,8 @@ proc ModulesHelp { } {
 }
 
 module-whatis   "$NAME $VERSION."
-prereq ("zlib")
+module load zlib
+prereq zlib
 setenv        PYTHON_VERSION     $VERSION
 #
 #
