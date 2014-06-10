@@ -19,6 +19,7 @@ then
     wget http://www.hdfgroup.org/ftp/HDF5/release/src/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
 else
    echo "the file is local, untarring it"
+   ls -lht $SRC_DIR/$SOURCE_FILE
    tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 fi
 
