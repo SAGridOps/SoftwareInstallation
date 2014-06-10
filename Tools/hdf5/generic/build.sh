@@ -12,7 +12,7 @@ echo $SRC_DIR
 echo $NAME
 echo $VERSION
 #module load gcc/4.8.2
-if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
+if [[ ! -s $SRC_DIR/$SOURCE_FILE ]]
 then
     echo "getting the file from the web"
     mkdir -p $SRC_DIR
