@@ -1,5 +1,7 @@
 SoftwareInstallation
 ====================
+[![Build Status](http://ci.sagrid.ac.za:8080/job/SAGrid%20Application%20Repo/badge/icon)](http://ci.sagrid.ac.za:8080/job/SAGrid%20Application%20Repo/)
+
 
 The installation scripts for SAGrid Application deployment. Note that 
 these are not the applications themselves (they are kept in the 
@@ -31,4 +33,3 @@ a pull request to the "proposed" branch. Once the proposed applications are succ
 
 # Scrum
 [![Stories in Ready](https://badge.waffle.io/sagridops/softwareinstallation.png?label=ready&title=Ready)](https://waffle.io/sagridops/softwareinstallation)
-[![Build Status](http://ci.sagrid.ac.za:8080/job/SAGrid%20Application%20Repo/badge/icon)](http://ci.sagrid.ac.za:8080/job/SAGrid%20Application%20Repo/)
