@@ -1,6 +1,6 @@
 SoftwareInstallation
 ====================
-
+<a href='http://ci.sagrid.ac.za:8080/job/SAGrid%20Application%20Repo/'><img src='http://ci.sagrid.ac.za:8080/buildStatus/icon?job=SAGrid Application Repo'></a>
 The installation scripts for SAGrid Application deployment. Note that 
 these are not the applications themselves (they are kept in the 
 "demo" directory), but the scripts necessary to download and compile 
