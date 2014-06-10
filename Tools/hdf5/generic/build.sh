@@ -14,11 +14,14 @@ echo $VERSION
 #module load gcc/4.8.2
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
+    echo "getting the file from the web"
     mkdir -p $SRC_DIR
-	wget http://www.hdfgroup.org/ftp/HDF5/release/src/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
+    wget http://www.hdfgroup.org/ftp/HDF5/release/src/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
+else
+   else "the file is local, untarring it"
+   tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 fi
 
-tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 ls $WORKSPACE
 
 cd $WORKSPACE/$NAME-$VERSION
