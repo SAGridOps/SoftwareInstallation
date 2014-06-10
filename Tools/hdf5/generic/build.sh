@@ -16,7 +16,7 @@ if [[ ! -s $SRC_DIR/$SOURCE_FILE ]]
 then
     echo "getting the file from the web"
     mkdir -p $SRC_DIR
-    wget http://www.hdfgroup.org/ftp/HDF5/releases/src/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
+    wget http://www.hdfgroup.org/ftp/HDF5/releases/$NAME-$VERSION/src/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE 
 else
    echo "the file is local, untarring it"
    ls -lht $SRC_DIR/$SOURCE_FILE
