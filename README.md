@@ -31,4 +31,3 @@ a pull request to the "proposed" branch. Once the proposed applications are succ
 
 # Scrum
 [![Stories in Ready](https://badge.waffle.io/sagridops/softwareinstallation.png?label=ready&title=Ready)](https://waffle.io/sagridops/softwareinstallation)
-[![Stories in Backlog](https://badge.waffle.io/sagridops/softwareinstallation.png?label=backlog&title=Backlog)](https://waffle.io/sagridops/softwareinstallation)
