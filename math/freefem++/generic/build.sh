@@ -6,11 +6,13 @@ module add ci
 
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
-	mkdir -p $SRC_DIR
+	mkdir -vp $SRC_DIR
 	echo "getting the file"
 	wget http://www.freefem.org/ff++/ftp/$SOURCE_FILE  -O $SRC_DIR/$SOURCE_FILE
+else
+      	tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 fi
-tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
+
 ls
 cd freefem++-$VERSION
 ./configure --enable-download
