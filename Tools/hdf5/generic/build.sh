@@ -18,7 +18,7 @@ then
     mkdir -p $SRC_DIR
     wget http://www.hdfgroup.org/ftp/HDF5/release/src/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
 else
-   else "the file is local, untarring it"
+   "the file is local, untarring it"
    tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 fi
 
