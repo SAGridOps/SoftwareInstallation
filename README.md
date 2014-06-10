@@ -31,4 +31,4 @@ a pull request to the "proposed" branch. Once the proposed applications are succ
 
 # Scrum
 [![Stories in Ready](https://badge.waffle.io/sagridops/softwareinstallation.png?label=ready&title=Ready)](https://waffle.io/sagridops/softwareinstallation)
-[![Build Status](http://ci.sagrid.ac.za:8080/buildStatus/icon?job=SAGrid%20Application%20 Repo)](http://ci.sagrid.ac.za:8080/job/SAGrid%20Application%20Repo/)
+[![Build Status](http://ci.sagrid.ac.za:8080/job/SAGrid%20Application%20Repo/badge/icon)](http://ci.sagrid.ac.za:8080/job/SAGrid%20Application%20Repo/)
