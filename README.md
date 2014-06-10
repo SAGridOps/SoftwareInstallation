@@ -1,4 +1,3 @@
-[![Stories in Ready](https://badge.waffle.io/sagridops/softwareinstallation.png?label=ready&title=Ready)](https://waffle.io/sagridops/softwareinstallation)
 SoftwareInstallation
 ====================
 
@@ -29,3 +28,7 @@ Tools are usually common dependencies which are not found on the WN
 If you would like to see an application deployed on the infrastructure 
 (for your own use, or to support a scientific community), please issue 
 a pull request to the "proposed" branch. Once the proposed applications are successfully built on the SAGrid CI platform, they will be merged with the master branch.
+
+# Scrum
+[![Stories in Ready](https://badge.waffle.io/sagridops/softwareinstallation.png?label=ready&title=Ready)](https://waffle.io/sagridops/softwareinstallation)
+[![Stories in Backlog](https://badge.waffle.io/sagridops/softwareinstallation.png?label=backlog&title=Backlog)](https://waffle.io/sagridops/softwareinstallation)
