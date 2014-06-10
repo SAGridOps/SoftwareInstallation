@@ -15,7 +15,7 @@ echo $VERSION
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
     mkdir -p $SRC_DIR
-	wget http://www.hdfgroup.org/ftp/HDF5/current/src/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
+	wget http://www.hdfgroup.org/ftp/HDF5/release/src/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
 fi
 
 tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
