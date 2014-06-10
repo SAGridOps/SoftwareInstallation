@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/sagridops/softwareinstallation.png?label=ready&title=Ready)](https://waffle.io/sagridops/softwareinstallation)
 SoftwareInstallation
 ====================
 
