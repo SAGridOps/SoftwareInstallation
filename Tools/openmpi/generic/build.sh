@@ -10,6 +10,7 @@ echo "SOFT DIR = $SOFT_DIR"
 echo "WORKSPACE = $WORKSPACE"
 echo "SRC DIR = $SRC_DIR"
 echo "REPO DIR = $REPO_DIR"
+mkdir -p $REPO_DIR
 ls -lht $SRC_DIR
 #module load gcc/4.8.2
 
