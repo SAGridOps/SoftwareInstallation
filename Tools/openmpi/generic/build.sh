@@ -11,13 +11,13 @@ echo "WORKSPACE = $WORKSPACE"
 echo "SRC DIR = $SRC_DIR"
 echo "REPO DIR = $REPO_DIR"
 mkdir -p $REPO_DIR
+mkdir -p $SRC_DIR
 ls -lht $SRC_DIR
 #module load gcc/4.8.2
 
 echo "where is the code ?"
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
     echo "Not available locally, downloading"
-    mkdir -p $SRC_DIR
     wget http://www.open-mpi.org/software/ompi/v1.8/downloads/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
 else 
     echo "the code is already here, untarring"
