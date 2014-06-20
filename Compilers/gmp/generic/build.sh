@@ -1,5 +1,8 @@
 #!/bin/bash -e
 SOURCE_FILE=$NAME-$VERSION.tar.gz
+mkdir -p $WORKSPACE
+mkdir -p $SRC_DIR
+mkdir -p $SOFT_DIR
 
 module load ci
 
@@ -7,9 +10,9 @@ if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
         mkdir -p $SRC_DIR
 	wget http://mirror.ufs.ac.za/gnu/gnu/gmp/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
+else
+   tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 fi
-tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
-
 cd $WORKSPACE/$NAME-$VERSION
 ./configure --prefix $SOFT_DIR 
 make -j 8
