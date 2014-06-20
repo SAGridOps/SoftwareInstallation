@@ -12,6 +12,7 @@ echo "SRC DIR = $SRC_DIR"
 echo "REPO DIR = $REPO_DIR"
 # Check that the repository directory for the application is available
 mkdir -p $REPO_DIR
+mkdir -p $SOFT_DIR
 # ensure that there is a place to download the source code.
 mkdir -p $SRC_DIR
 ls -lht $SRC_DIR
