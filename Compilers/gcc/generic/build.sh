@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash 
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 CPUS=$(cat /proc/cpuinfo |grep "^processor"|wc -l)
 
