@@ -7,6 +7,8 @@
 # this will set up paths for the application artifact (build.tar.gz) as well as the directory in which to 
 # cache the source file.
 module add ci
+module add gcc/4.8.2
+module add openmpi/1.8.1
 # the $SRC_DIR may not be present in the first run, so we force it here. 
 mkdir -vp $SRC_DIR
 SOURCE_FILE=$NAME-$VERSION.tar.gz
