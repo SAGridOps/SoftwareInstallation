@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash 
 # VARIABLES PASSED FROM JENKINS:
 # 
 # 
