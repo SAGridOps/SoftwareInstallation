@@ -46,9 +46,9 @@ echo "making the module file for the build system"
 mkdir -p modules
 (
 cat <<MODULE_FILE
-#%Module1.0
-## $NAME modulefile
-##
+%Module1.0
+# $NAME modulefile
+#
 proc ModulesHelp { } {
     puts stderr "       This module does nothing but alert the user"
     puts stderr "       that the [module-info name] module is not available"
@@ -62,8 +62,8 @@ prepend-path PATH              $::env(FREEFEM_DIR)/bin
 MODULE_FILE
 ) > modules/$VERSION 
 # w
-mkdir -p $LIBRARIES_MODULES/$NAME
-cp modules/$VERSION $LIBRARIES_MODULES/$NAME 
+mkdir -p $MATH_MODULES/$NAME
+cp modules/$VERSION $MATH_MODULES/$NAME 
 
 
 # We need to make a CVMFS modulefile as well
@@ -85,3 +85,4 @@ prepend-path LD_LIBRARY_PATH   $::env(FREEFEM_DIR)/lib
 prepend-path PATH              $::env(FREEFEM_DIR)/bin
 MODULE_FILE
 ) > modules/$VERSION 
+cp modules/$VERSION $MODULES/$NAME 
