@@ -30,10 +30,15 @@ time make -j4
 # At this point, the compiliation should either pass or fail. If the compilation passes, we should continue, else exit the script.
 # The application is installed in $WORKSPACE/build
 time nice -n20 make install DESTDIR=$WORKSPACE/build
+echo ""
+echo "looks like the build was ok, let's check the actual build"
+make check
 
 mkdir -p $REPO_DIR
 rm -rf $REPO_DIR/* 
 tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE/build apprepo
+
+echo "making the module file for the build system"
 
 # we need to make a few modules for the application :
 # 1. the ci build module
@@ -52,7 +57,6 @@ proc ModulesHelp { } {
 module-whatis   "$NAME $VERSION."
 setenv       FREEFEM_VERSION       $VERSION
 setenv       FREEFEM_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-setenv       FREEFEM_DIR       
 prepend-path LD_LIBRARY_PATH   $::env(FREEFEM_DIR)/lib
 prepend-path PATH              $::env(FREEFEM_DIR)/bin
 MODULE_FILE
@@ -61,4 +65,23 @@ MODULE_FILE
 mkdir -p $LIBRARIES_MODULES/$NAME
 cp modules/$VERSION $LIBRARIES_MODULES/$NAME 
 
+
 # We need to make a CVMFS modulefile as well
+echo "making the module file for the execution environment"
+(
+cat <<MODULE_FILE
+#%Module1.0
+## $NAME modulefile
+##
+proc ModulesHelp { } {
+    puts stderr "       This module does nothing but alert the user"
+    puts stderr "       that the [module-info name] module is not available"
+}
+
+module-whatis   "$NAME $VERSION."
+setenv       FREEFEM_VERSION       $VERSION
+setenv       FREEFEM_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+prepend-path LD_LIBRARY_PATH   $::env(FREEFEM_DIR)/lib
+prepend-path PATH              $::env(FREEFEM_DIR)/bin
+MODULE_FILE
+) > modules/$VERSION 
