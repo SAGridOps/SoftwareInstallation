@@ -29,6 +29,7 @@ time make -j4
 time make -j4
 # At this point, the compiliation should either pass or fail. If the compilation passes, we should continue, else exit the script.
 # The application is installed in $WORKSPACE/build
+
 time nice -n20 make install DESTDIR=$WORKSPACE/build
 echo ""
 echo "looks like the build was ok, let's check the actual build"
