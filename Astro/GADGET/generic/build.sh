@@ -8,18 +8,6 @@ module add hdf5
 module add openmpi
 module add gsl
 
-rm -rf $FFTW_DIR
-tar xvfz /repo/$SITE/$OS/$ARCH/fftw/$FFTW_VERSION/build.tar.gz -C /
-
-rm -rf $HDF5_DIR
-tar xvfz /repo/$SITE/$OS/$ARCH/hdf5/$HDF5_VERSION/build.tar.gz -C /
-
-rm -rf $OPENMPI_DIR
-tar xvfz /repo/$SITE/$OS/$ARCH/openmpi/$OPENMPI_VERSION/build.tar.gz -C /
-
-rm -rf $GSL_DIR
-tar xvfz /repo/$SITE/$OS/$ARCH/gsl/$GSL_VERSION/build.tar.gz -C /
-
 # GADGET comes with a Make file which needs to be tweaked in order to compile 
 # for a specific architecture/system.
 # this is kept in the repo which is checked out before compiling.
@@ -47,7 +35,8 @@ NAME=`echo ${NAME:0:1} | tr  '[a-z]' '[A-Z]'`${NAME:1}
 DIR=$PWD
 cd $WORKSPACE/$NAME-$VERSION/Gadget2
 cp -fv $MAKEFILE Makefile
-make install DESTDIR=$WORKSPACE/build
+mkdir -p $WORKSPACE/build
+make DESTDIR=$WORKSPACE/build
 
 
 mkdir -p $REPO_DIR
