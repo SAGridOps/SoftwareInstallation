@@ -6,9 +6,22 @@
 # Add the module for the build environment
 # this will set up paths for the application artifact (build.tar.gz) as well as the directory in which to 
 # cache the source file.
+echo "PATH is $PATH"
+echo "LD_LIBRARY_PATH is $LD_LIBRARY_PATH"
 module add ci
+echo "added ci"
+module avail
+echo "PATH is $PATH"
+echo "LD_LIBRARY_PATH is $LD_LIBRARY_PATH"
 module add gcc/4.8.2
+echo "added gcc"
+echo "PATH is $PATH"
+echo "LD_LIBRARY_PATH is $LD_LIBRARY_PATH"
 module add openmpi/1.8.1
+echo "added openmpi"
+echo "PATH is $PATH"
+echo "LD_LIBRARY_PATH is $LD_LIBRARY_PATH"
+
 # the $SRC_DIR may not be present in the first run, so we force it here. 
 mkdir -vp $SRC_DIR
 SOURCE_FILE=$NAME-$VERSION.tar.gz
