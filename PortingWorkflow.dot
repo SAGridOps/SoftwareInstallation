@@ -1,0 +1,26 @@
+digraph G{
+aize = "4,4";
+"Build Script" -> "Pull Request";
+"Pull Request" -> Jenkins;
+Jenkins -> Build;
+Build -> "Pass Build";
+Build -> "Fail Build";
+
+# We now start the workflow branch that results from a successful build
+"Pass Build" -> "Invoke Test";
+"Invoke Test" -> "Pass Test";
+"Invoke Test" -> "Fail Test";
+
+# We now start the workflow that starts from a successful test
+"Pass Test" -> "Invoke Artifact";
+"Invoke Artifact" -> "Stage to testing repo";
+"Stage to testing repo" -> "Field tests";
+"Field tests" -> "Certification";
+"Certification" -> "Repo lock";
+"Repo lock" -> "Artifact deployment";
+"Artifact deployment" -> "Repo version change";
+"Repo version change" -> "Site tag";
+# At this point the application is in the CVMFS repository and is available at all sites which mount that repo
+
+#
+}
