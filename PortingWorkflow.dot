@@ -1,26 +1,79 @@
+###############################################
+# Africa-Arabia Regional Operations Centre
+# This source code is under the copyright of the CSIR.
+# Title                   : PortingWorkflow.dot
+# First Author            : Bruce Becker
+# Institute               : CSIR Meraka Insitute
+###############################################
+#
+# This describes the workflow that new applications follow when
+# proposed for integration into the SAGrid CVMFS repository.
+#
+# The procedure is essentially
+# Propose -> Build -> Test -> Deploy -> Tag
+# There are branches for failure and success at each of these
+# major nodes
+
+# Certain tasks have to be done by humans, while others are
+# done by spiffy robots, like Jenkins or webhooks.
+# Manual tasks are shown in fat black arrows, while
+# Automated tasks are shown in fat blue arrows
+
 digraph G{
+label = "Application porting, testing, integration and deployment workflow"
 aize = "4,4";
-"Build Script" -> "Pull Request";
-"Pull Request" -> Jenkins;
-Jenkins -> Build;
-Build -> "Pass Build";
-Build -> "Fail Build";
+
+# First, we define all the vertices
+# Each vertex implies an action, so we want to create links to the documentaiton
+# of that action. What does the user and the developer need to know ?
+
+BuildScript          [label="Create \n Build Script"       URL="docs/Build.md"];
+PullRequest          [label="Pull Request"       URL="docs/PullRequest.md"];
+CreateJenkinsJob    [label="Create Jenkins\n  Job" URL="docs/JenkinsJob.md"];
+Build               [label="Build"              URL="docs/Build.md"           color="blue"];
+FailBuild           [label="Fail Build"         URL="docs/FailBuild.md"       color="blue"];
+UserContactBuild    [label="Follow up \n with the user"  URL="docs/UserBuildFollowup.md" color="black"];
+InvokeTest          [label="Invoke Test"        URL="docs/InvokeTest.md"      color="blue"];
+FailTest            [label="Fail Test"          URL="docs/FailTest.md"];
+UserContactTest     [label="Open Issue\n on Github"  URL="docs/UserTestFollowup.md"   color="black"];
+InvokeArtifact      [label="Invoke Artifact"    URL="docs/InvokeArtifact.md"];
+StageToTesting      [label="Stage to\n Testing Repo" color="black"];
+FieldTests          [label="Field Tests" color="black"];
+RepoLock            [label="Lock CVMFS \n repo" color="black"];
+FollowUpSites       [label="Open Issue\n on Github" color="black"]
+RepoUpdate          [label="Update Repo\n Version" color="black"]
+SiteTag             [label="Tag sites" color="black"]
+
+# Start with the Proposal branch - the main branch
+BuildScript -> PullRequest                 [color="black"];
+PullRequest -> CreateJenkinsJob            [color="black"];
+PullRequest -> Build                       [label="if first time" color="blue"];
+PullRequest -> InvokeTest                  [label="if build \n has passed" color="blue"];
+# Once the Jenkins job has been created, we proceed to build
+CreateJenkinsJob -> Build                 [color="blue"];
+Build -> InvokeTest                        [label="Build Passes" color="blue"];
+Build -> FailBuild                         [label="Build Fails" color="blue"];
+FailBuild -> UserContactBuild              [color="black"];
+UserContactBuild -> PullRequest            [color="black"];
 
 # We now start the workflow branch that results from a successful build
-"Pass Build" -> "Invoke Test";
-"Invoke Test" -> "Pass Test";
-"Invoke Test" -> "Fail Test";
+InvokeTest -> InvokeArtifact              [label="Tests Pass" color="black"];
+InvokeTest -> FailTest                    [label="Tests Fail" color="blue"];
+FailTest -> UserContactTest               [color="black"];
+UserContactTest -> PullRequest            [color="black"];
 
 # We now start the workflow that starts from a successful test
-"Pass Test" -> "Invoke Artifact";
-"Invoke Artifact" -> "Stage to testing repo";
-"Stage to testing repo" -> "Field tests";
-"Field tests" -> "Certification";
-"Certification" -> "Repo lock";
-"Repo lock" -> "Artifact deployment";
-"Artifact deployment" -> "Repo version change";
-"Repo version change" -> "Site tag";
+InvokeArtifact -> StageToTesting;
+StageToTesting -> FieldTests [label="Update Repo\n Version"];
+FieldTests -> RepoLock [label="Field Tests Pass" color="black"];
+FieldTests -> FollowUpSites [label="Field Tests Fail"];
+FollowUpSites -> InvokeTest;
+RepoLock -> DeployArtifact;
+DeployArtifact -> RepoUpdate;
+RepoUpdate -> SiteTag;
 # At this point the application is in the CVMFS repository and is available at all sites which mount that repo
 
-#
+###################################################
+# Build Failed Branch
+###################################################
 }
