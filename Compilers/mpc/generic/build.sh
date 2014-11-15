@@ -1,4 +1,4 @@
-	#!/bin/bash -e
+#!/bin/bash -e
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
@@ -25,7 +25,7 @@ make check
 make install DESTDIR=$WORKSPACE/build
 
 mkdir -p $REPO_DIR
-rm -rf $REPO_DIR/* 
+rm -rf $REPO_DIR/*
 tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE/build apprepo
 
 mkdir -p modules
@@ -47,7 +47,7 @@ setenv       MPC_VERSION     $VERSION
 setenv       MPC_DIR         /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH $::env(MPC_DIR)/lib
 MODULE_FILE
-) > modules/$VERSION 
+) > modules/$VERSION
 
-mkdir -p $LIBRARIES_MODULES/$NAME 
+mkdir -p $LIBRARIES_MODULES/$NAME
 cp modules/$VERSION $LIBRARIES_MODULES/$NAME
