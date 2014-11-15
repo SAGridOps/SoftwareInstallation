@@ -9,6 +9,7 @@ module load ci
 echo $SOFT_DIR
 echo $WORKSPACE
 echo $SRC_DIR
+mkdir -p $SOFT_DIR $WORKSPACE $SRC_DIR
 echo $NAME
 echo $VERSION
 #module load gcc/4.8.2

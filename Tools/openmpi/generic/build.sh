@@ -1,22 +1,26 @@
-#!/bin/bash -e
+#!/bin/bash 
 # VARIABLES PASSED FROM JENKINS:
 # 
 # 
 # 
 SOURCE_FILE=$NAME-$VERSION.tar.gz
-
+# the CI module is needed to tell jenkins where to put artifacts
 module load ci
 echo "SOFT DIR = $SOFT_DIR"
 echo "WORKSPACE = $WORKSPACE"
 echo "SRC DIR = $SRC_DIR"
 echo "REPO DIR = $REPO_DIR"
+# Check that the repository directory for the application is available
+mkdir -p $REPO_DIR
+mkdir -p $SOFT_DIR
+# ensure that there is a place to download the source code.
+mkdir -p $SRC_DIR
 ls -lht $SRC_DIR
-#module load gcc/4.8.2
+module load gcc/4.8.2
 
 echo "where is the code ?"
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
     echo "Not available locally, downloading"
-    mkdir -p $SRC_DIR
     wget http://www.open-mpi.org/software/ompi/v1.8/downloads/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
 else 
     echo "the code is already here, untarring"
@@ -35,6 +39,7 @@ ls -lht $SOFT_DIR
 
 rm -rf $REPO_DIR/* 
 mkdir -p $REPO_DIR
+# we now move the artifact to the application repository
 tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE/build apprepo
 
 mkdir -p modules

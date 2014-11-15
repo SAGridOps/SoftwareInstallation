@@ -1,22 +1,13 @@
 #!/bin/bash 
-SOURCE_FILE=$NAME-$VERSION.tar.gz
+#  This only gets run after build.sh
+
 CPUS=$(cat /proc/cpuinfo |grep "^processor"|wc -l)
 
 module load ci
 module load gmp/5.1.3
 module load mpfr/3.1.2
 module load mpc/1.0.1
-
-# we need to import the build of the dependencies that we need
-# cleaning out the old directories first
-rm -rf $GMP_DIR
-tar -xvzf /repo/$SITE/$OS/$ARCH/gmp/$GMP_VERSION/build.tar.gz -C /
-
-rm -rf $MPFR_DIR
-tar -xvzf /repo/$SITE/$OS/$ARCH/mpfr/$MPFR_VERSION/build.tar.gz -C /
-
-rm -rf $MPC_DIR
-tar -xvzf /repo/$SITE/$OS/$ARCH/mpc/$MPC_VERSION/build.tar.gz -C /
+module load gcc/$VERSION
 
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then

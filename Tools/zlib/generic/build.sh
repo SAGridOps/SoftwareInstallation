@@ -7,8 +7,11 @@ SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
 echo $SOFT_DIR
+mkdir -p $SOFT_DIR
 echo $WORKSPACE
+mkdir -p $WORKSPACE
 echo $SRC_DIR
+mkdir -p $SRC_DIR
 echo $NAME
 echo $VERSION
 #module load gcc/4.8.2
