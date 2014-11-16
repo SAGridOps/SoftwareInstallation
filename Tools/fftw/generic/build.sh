@@ -5,7 +5,7 @@ NAME=${NAME,,}
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
-#module load gcc/4.8.2
+module load gcc/4.8.2
 module avail
 module load openmpi
 
@@ -14,7 +14,7 @@ tar -xvzf /repo/$SITE/$OS/$ARCH/openmpi/$OPENMPI_VERSION/build.tar.gz -C /
 echo $PATH
 echo $LD_LIBRARY_PATH
 echo $OPENMPI_DIR
-which mpicc 
+which mpicc
 
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]]
 then
@@ -32,7 +32,7 @@ make check
 make install DESTDIR=$WORKSPACE/build
 
 mkdir -p $REPO_DIR
-rm -rf $REPO_DIR/* 
+rm -rf $REPO_DIR/*
 tar -cvzf $REPO_DIR/build.tar.gz -C $WORKSPACE/build apprepo
 
 mkdir -p modules
@@ -51,7 +51,7 @@ setenv       FFTW_VERSION       $VERSION
 setenv       FFTW_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(FFTW_DIR)/lib
 MODULE_FILE
-) > modules/$VERSION 
+) > modules/$VERSION
 
-mkdir -p $LIBRARIES_MODULES/$NAME 
-cp modules/$VERSION $LIBRARIES_MODULES/$NAME 
+mkdir -p $LIBRARIES_MODULES/$NAME
+cp modules/$VERSION $LIBRARIES_MODULES/$NAME
