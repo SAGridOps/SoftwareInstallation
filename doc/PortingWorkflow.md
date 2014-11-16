@@ -1,3 +1,11 @@
+---
+Category: Documentation
+Tags:
+  - Documentation
+  - User
+  - Jenkins
+  - Porting
+---
 Here's what you need to know to get started.
 
 # Scaffolding
@@ -15,7 +23,9 @@ You are encouraged to comment on and contribute to this scaffolding (by sending 
 Assuming you're reading this with the intention of porting a new application to the grid, we're making a deal with you - you pull your weight, we'll pull ours. The deal of course is that you get to do as little as possible, and we get new applications that do science and don't break anything. The tools and workflow have been designed to minimise the overhead felt by application developers, while giving full transparency of the procedure to all stakeholders at every step.
 The porting workflow is described in detail by the image below.
 
-![Porting Workflow](PortingWorkflow.png)
+## Promotion
+
+We use a [Jenkins plugin](https://wiki.jenkins-ci.org/display/JENKINS/Promoted+Builds+Plugin) to *"promote"* builds of projects. This is a means of letting the sites and platform admins know when a project is ready to be tested or deployed. Promotion is a semi-automated procedure. When **builds** and **functional tests** pass successfully, they are promoted by Jenkins. The platform administrators can then manually promote the builds after human checks.
 
 # "Successful" Branch
 
@@ -50,6 +60,14 @@ So, what are the steps that you as researcher or developer of a new application 
     * **Outcomes**:
       * You add a new `build.sh`
       * Your build script creates executables and libraries which can be tested
-  * **Define the tests yourself**: this step is man
-  * [Send a pull request]:  as well as be able to send a [pull request](https://help.github.com/articles/using-pull-requests/).
-  *
+  * **Define the tests**: This step is mandatory for including the application in the testing repository. The tests will be automatically executed by Jenkins when projects are 'promoted' during the various integration phases. As the developer, you need to define what the success conditions are - these may be the creation of a specific file, or specific output on `stdout`.
+    * **Outcomes**:
+      * You add a new `test.sh`
+      * Your test script shows that the application can use the right dependencies and does something relevant to that application wiht success.
+  * **Send a pull request**:  Once you think that your application will build and pass tests, send a [pull request](https://help.github.com/articles/using-pull-requests/) to the repo. This will trigger the integration procedure and code review.
+    * **Outcomes**:
+      * The Jenkins admin will create a job for you, which will execute the build and test scripts.
+
+From here on out, the magic of Jenkins takes over.
+
+![Porting Workflow](PortingWorkflow.png)

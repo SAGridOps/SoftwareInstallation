@@ -37,6 +37,9 @@ label = "Application porting, testing, integration and deployment workflow"
 # of that action. What does the user and the developer need to know ?
 
 BuildScript          [label="Create \n Build Script"       URL="docs/Build.md" color="green"];
+TestScript           [label="Create\n Test Script" URL="docs/Tests.md" color="green"];
+ForkRepo             [label="Fork the\n repository" color="green"];
+AddScripts           [label="Add your\n project" URL="docs/AddYourproject.md" color="green"]
 PullRequest          [label="Pull Request"       URL="docs/PullRequest.md"     color="green"];
 CreateJenkinsJob    [label="Create Jenkins\n  Job" URL="docs/JenkinsJob.md"    color="black"];
 Build               [label="Build"              URL="docs/Build.md"           color="blue"];
@@ -54,27 +57,31 @@ RepoUpdate          [label="Update Repo\n Version" color="black"]
 SiteTag             [label="Tag sites" color="black"]
 
 # Start with the Proposal branch - the main branch
+ForkRepo -> AddScripts
+AddScripts -> BuildScript
+AddScripts -> TestScript
 BuildScript -> PullRequest                 [color="black"];
+TestScript -> PullRequest                  [color="black"]
 PullRequest -> CreateJenkinsJob            [color="black"];
 PullRequest -> Build                       [label="if first time" color="blue"];
 PullRequest -> InvokeTest                  [label="if build \n has passed" color="blue"];
 # Once the Jenkins job has been created, we proceed to build
 CreateJenkinsJob -> Build                 [color="blue"];
-Build -> InvokeTest                        [label="Build Passes" color="blue"];
+Build -> InvokeTest                       [label="Promote" color="gold"];
 Build -> FailBuild                         [label="Build Fails" color="blue"];
 FailBuild -> UserContactBuild              [color="black"];
 UserContactBuild -> PullRequest            [label="Resolve\n build\n issue" color="black"];
 
 # We now start the workflow branch that results from a successful build
-InvokeTest -> InvokeArtifact              [label="Tests Pass" color="black"];
+InvokeTest -> InvokeArtifact              [label="Promote" color="gold"];
 InvokeTest -> FailTest                    [label="Tests Fail" color="blue"];
 FailTest -> UserContactTest               [color="blue"];
 UserContactTest -> PullRequest            [label="Resolve\n test\n issue" color="black"];
 
 # We now start the workflow that starts from a successful test
-InvokeArtifact -> StageToTesting;
+InvokeArtifact -> StageToTesting [label="Promote" color="gold"];
 StageToTesting -> FieldTests [label="Update Repo\n Version"];
-FieldTests -> RepoLock [label="Field Tests Pass" color="black"];
+FieldTests -> RepoLock [label="Promote" color="gold"];
 FieldTests -> FollowUpSites [label="Field Tests Fail"];
 FollowUpSites -> InvokeTest;
 RepoLock -> DeployArtifact;
