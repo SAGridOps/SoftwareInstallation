@@ -1,10 +1,15 @@
 ---
 Category: Documentation
+Description: Overview of the porting procedure for new project developers
 Tags:
   - Documentation
   - User
   - Jenkins
   - Porting
+License: Apache
+Copyright:
+  - Author: Bruce Becker
+  - Institute: CSIR Meraka Institute
 ---
 Here's what you need to know to get started.
 

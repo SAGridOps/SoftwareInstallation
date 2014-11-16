@@ -22,7 +22,23 @@ For example, for work contributed by CSIR employees -
 ## Issues
 Github isues are commonly opened to request applications, and to track their dependencies. If the file you are contributing responds to an issue or resolves an issue, you can link it in the header. This is highly recommended, especially in the case of contributing new applications to the repository.
 
+# YAML frontmatter
 
+If you're writing something that understands Markdown, use the following front matter:
+```
+---
+Category: e.g. Documentation
+Description: short description
+Tags:
+  - Documentation
+  - etc
+  - etc
+License: Apache
+Copyright:
+  - Author: First Author
+  - Institute: Institute(s) that hold(s) copyright.
+---
+```
 # Header
 Include the text beneath "cut below" below in your files :
 
@@ -43,8 +59,7 @@ Include the text beneath "cut below" below in your files :
 # Put a short description of what this file does here
 #
 #
-```
-
 
 here is some more text :)
 here is even more text.
+```
