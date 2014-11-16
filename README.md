@@ -1,7 +1,10 @@
 [![Stories in Ready](https://badge.waffle.io/sagridops/softwareinstallation.png?label=ready&title=Ready)](https://waffle.io/sagridops/softwareinstallation)
 SoftwareInstallation
 ====================
-[![Build Status](http://ci.sagrid.ac.za:8080/job/SAGrid%20Application%20Repo/badge/icon)](http://ci.sagrid.ac.za:8080/job/SAGrid%20Application%20Repo/) [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.10233.png)](https://zenodo.org/record/10233?ln=en)
+<!---
+[![Build Status](http://ci.sagrid.ac.za:8080/job/SAGrid%20Application%20Repo/badge/icon)](http://ci.sagrid.ac.za:8080/job/SAGrid%20Application%20Repo/)
+--->
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.10233.png)](https://zenodo.org/record/10233?ln=en)
 
 This repo contains the installation scripts for SAGrid Application deployment. Note that
 these are not the applications themselves (they are kept in the

@@ -14,28 +14,37 @@
 # There are branches for failure and success at each of these
 # major nodes
 
+
+############################################################
+# Who does what ?
+############################################################
 # Certain tasks have to be done by humans, while others are
 # done by spiffy robots, like Jenkins or webhooks.
-# Manual tasks are shown in fat black arrows, while
-# Automated tasks are shown in fat blue arrows
+# Manual tasks are shown in black arrows, while
+# Automated tasks are shown in blue arrows.
+
+# Tasks are represented by vertices on the graph, with differing colors depending on whow has to do whatL
+# Black : SAGridOps
+# Green : User/Developer
+# Blue : Some robot, usually Jenkins
 
 digraph G{
 label = "Application porting, testing, integration and deployment workflow"
-aize = "4,4";
+#aize = "4,4";
 
 # First, we define all the vertices
 # Each vertex implies an action, so we want to create links to the documentaiton
 # of that action. What does the user and the developer need to know ?
 
-BuildScript          [label="Create \n Build Script"       URL="docs/Build.md"];
-PullRequest          [label="Pull Request"       URL="docs/PullRequest.md"];
-CreateJenkinsJob    [label="Create Jenkins\n  Job" URL="docs/JenkinsJob.md"];
+BuildScript          [label="Create \n Build Script"       URL="docs/Build.md" color="green"];
+PullRequest          [label="Pull Request"       URL="docs/PullRequest.md"     color="green"];
+CreateJenkinsJob    [label="Create Jenkins\n  Job" URL="docs/JenkinsJob.md"    color="black"];
 Build               [label="Build"              URL="docs/Build.md"           color="blue"];
 FailBuild           [label="Fail Build"         URL="docs/FailBuild.md"       color="blue"];
-UserContactBuild    [label="Follow up \n with the user"  URL="docs/UserBuildFollowup.md" color="black"];
+UserContactBuild    [label="Open Issue\n on Github"  URL="docs/UserBuildFollowup.md" color="blue"];
 InvokeTest          [label="Invoke Test"        URL="docs/InvokeTest.md"      color="blue"];
 FailTest            [label="Fail Test"          URL="docs/FailTest.md"];
-UserContactTest     [label="Open Issue\n on Github"  URL="docs/UserTestFollowup.md"   color="black"];
+UserContactTest     [label="Open Issue\n on Github"  URL="docs/UserTestFollowup.md"   color="blue"];
 InvokeArtifact      [label="Invoke Artifact"    URL="docs/InvokeArtifact.md"];
 StageToTesting      [label="Stage to\n Testing Repo" color="black"];
 FieldTests          [label="Field Tests" color="black"];
@@ -54,13 +63,13 @@ CreateJenkinsJob -> Build                 [color="blue"];
 Build -> InvokeTest                        [label="Build Passes" color="blue"];
 Build -> FailBuild                         [label="Build Fails" color="blue"];
 FailBuild -> UserContactBuild              [color="black"];
-UserContactBuild -> PullRequest            [color="black"];
+UserContactBuild -> PullRequest            [label="Resolve\n build\n issue" color="black"];
 
 # We now start the workflow branch that results from a successful build
 InvokeTest -> InvokeArtifact              [label="Tests Pass" color="black"];
 InvokeTest -> FailTest                    [label="Tests Fail" color="blue"];
-FailTest -> UserContactTest               [color="black"];
-UserContactTest -> PullRequest            [color="black"];
+FailTest -> UserContactTest               [color="blue"];
+UserContactTest -> PullRequest            [label="Resolve\n test\n issue" color="black"];
 
 # We now start the workflow that starts from a successful test
 InvokeArtifact -> StageToTesting;
