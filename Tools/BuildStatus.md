@@ -22,7 +22,7 @@ Copyright:
 | FFTW | [![Build Status](http://ci.sagrid.ac.za:8080/job/fftw/badge/icon)](http://ci.sagrid.ac.za:8080/job/fftw/) |
 | boost | |
 | argtable | |
-| freetype | |
+| freetype |  |
 
 # Toolkits
 
