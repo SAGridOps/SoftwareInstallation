@@ -37,7 +37,7 @@ cd $WORKSPACE/$NAME-$VERSION/Gadget2
 cp -fv $MAKEFILE Makefile
 mkdir -p $WORKSPACE/build
 make DESTDIR=$WORKSPACE/build
-
+make test
 
 mkdir -p $REPO_DIR
 rm -rf $REPO_DIR/* 
