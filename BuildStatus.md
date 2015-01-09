@@ -15,7 +15,7 @@ Here's a spiffy table with the status of all of the projects which SAGrid is res
 | | Name | Status |
 |:-:|:--:|:------:|
 | **Compilers** | | |
-| | GMP | [![Build Status](http://ci.sagrid.ac.za:8080/job/GMP/badge/icon)](http://ci.sagrid.ac.za:8080/job/GMP/) |
+| | GMP | [![Build Status]([![Build Status](http://ci.sagrid.ac.za:8080/buildStatus/icon?job=GMP)](http://ci.sagrid.ac.za:8080/view/All/job/gmp/)) |
 | | MPFR | [![Build Status](http://ci.sagrid.ac.za:8080/job/mpfr/badge/icon)](http://ci.sagrid.ac.za:8080/job/mpfr/) |
 | | MPC | [![Build Status](http://ci.sagrid.ac.za:8080/job/mpc/badge/icon)](http://ci.sagrid.ac.za:8080/job/mpc/) |
 | | GCC | [![Build Status](http://ci.sagrid.ac.za:8080/job/gcc/badge/icon)](http://ci.sagrid.ac.za:8080/job/gcc/) |
