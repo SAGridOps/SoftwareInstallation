@@ -11,6 +11,8 @@ Copyright:
   - Institute: CSIR Meraka Institute
 ---
 
+[![Build Status](http://ci.sagrid.ac.za:8080/buildStatus/icon?job=GMP)](http://ci.sagrid.ac.za:8080/view/All/job/gmp/)
+
 | Name | Status |
 |:--:|:------:|
 | GMP | [![Build Status](http://ci.sagrid.ac.za:8080/job/GMP/badge/icon)](http://ci.sagrid.ac.za:8080/job/GMP/) |
@@ -20,4 +22,4 @@ Copyright:
 
 <!--- include an iframe of the actual GCC --->
 
-<iframe ]src="http://ci.sagrid.ac.za:8080/job/GCC/jswidgets/health?html=true&skipDescription=true" width="470"/></iframe>
+<iframe src="http://ci.sagrid.ac.za:8080/job/GCC/jswidgets/health?html=true&skipDescription=true" width="470"/></iframe>
